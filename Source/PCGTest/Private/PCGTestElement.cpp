@@ -12,7 +12,6 @@ namespace
 	const FText Tooltip = LOCTEXT("Tooltip", "Copies input to output");
 }
 
-// Begin UPCGSettings interface
 #if WITH_EDITOR
 FName UPCGTestElement::GetDefaultNodeName() const
 {
@@ -47,30 +46,6 @@ FPCGDataTypeIdentifier UPCGTestElement::GetCurrentPinTypesID(const UPCGPin* InPi
 {
 	// Returns the current pin types, which can either be the static types from the pin properties, or a dynamic type based on connected edges.
 	// By default we set output pin types to the union of the default input pin incident edge types, if it is dynamic and the default input exists.
-
-	// PCGex has this 
-	/*
-	if (!InPin->IsOutputPin() || InPin->Properties.Label == PCGPinConstants::DefaultInputLabel || InPin->Properties.Label == PCGExRecursionTracker::OutputContinueLabel || InPin->Properties.Label == PCGExRecursionTracker::OutputStopLabel)
-	{
-		return Super::GetCurrentPinTypesID(InPin);
-	}
-
-	FPCGDataTypeIdentifier Id = FPCGDataTypeInfoParam::AsId();
-	if (InPin->Properties.Label == PCGExRecursionTracker::OutputProgressLabel)
-	{
-		Id.CustomSubtype = static_cast<int32>(EPCGMetadataTypes::Float);
-	}
-	else if (InPin->Properties.Label == PCGExRecursionTracker::OutputIndexLabel)
-	{
-		Id.CustomSubtype = static_cast<int32>(EPCGMetadataTypes::Integer32);
-	}
-	else if (InPin->Properties.Label == PCGExRecursionTracker::OutputRemainderLabel)
-	{
-		Id.CustomSubtype = static_cast<int32>(EPCGMetadataTypes::Integer32);
-	}
-
-	return Id;
-	*/
 
 	const FName PinName = InPin->GetFName();
 
