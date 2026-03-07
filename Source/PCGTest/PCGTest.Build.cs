@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class PCGTest : ModuleRules
+public class MinimalPCGNode : ModuleRules
 {
-	public PCGTest(ReadOnlyTargetRules Target) : base(Target)
+	public MinimalPCGNode(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
