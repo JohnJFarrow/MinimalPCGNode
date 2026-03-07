@@ -5,7 +5,7 @@
 #include "PCGMinimalTestElement.generated.h"
 
 UCLASS(BlueprintType, ClassGroup = (Procedural), Category = "Unrealcode | Test Nodes")
-class MINIMALPCGNODE_API UPCGMinimalTestElement : public UPCGSettings
+class MINIMALPCGNODE_API UPCGMinimalTestElementSettings : public UPCGSettings
 {
 	GENERATED_BODY()
 

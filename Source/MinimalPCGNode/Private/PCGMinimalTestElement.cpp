@@ -13,27 +13,27 @@ namespace
 }
 
 #if WITH_EDITOR
-FName UPCGMinimalTestElement::GetDefaultNodeName() const
+FName UPCGMinimalTestElementSettings::GetDefaultNodeName() const
 {
 	return NodeName;
 }
 
-FText UPCGMinimalTestElement::GetDefaultNodeTitle() const
+FText UPCGMinimalTestElementSettings::GetDefaultNodeTitle() const
 {
 	return NodeTitle;
 }
 
-FText UPCGMinimalTestElement::GetNodeTooltipText() const
+FText UPCGMinimalTestElementSettings::GetNodeTooltipText() const
 {
 	return Tooltip;
 }
 
-EPCGSettingsType UPCGMinimalTestElement::GetType() const
+EPCGSettingsType UPCGMinimalTestElementSettings::GetType() const
 {
 	return EPCGSettingsType::Spatial;
 }
 
-bool UPCGMinimalTestElement::HasDynamicPins() const
+bool UPCGMinimalTestElementSettings::HasDynamicPins() const
 {
 	return true;
 }
@@ -42,7 +42,7 @@ bool UPCGMinimalTestElement::HasDynamicPins() const
 #endif
 
 
-FPCGDataTypeIdentifier UPCGMinimalTestElement::GetCurrentPinTypesID(const UPCGPin* InPin) const
+FPCGDataTypeIdentifier UPCGMinimalTestElementSettings::GetCurrentPinTypesID(const UPCGPin* InPin) const
 {
 	// Returns the current pin types, which can either be the static types from the pin properties, or a dynamic type based on connected edges.
 	// By default we set output pin types to the union of the default input pin incident edge types, if it is dynamic and the default input exists.
@@ -59,7 +59,7 @@ FPCGDataTypeIdentifier UPCGMinimalTestElement::GetCurrentPinTypesID(const UPCGPi
 }
 
 
-TArray<FPCGPinProperties> UPCGMinimalTestElement::InputPinProperties() const
+TArray<FPCGPinProperties> UPCGMinimalTestElementSettings::InputPinProperties() const
 {
 	// Init pins - increase the number to add more pins
 	TArray<FPCGPinProperties> PinProperties;
@@ -76,7 +76,7 @@ TArray<FPCGPinProperties> UPCGMinimalTestElement::InputPinProperties() const
 }
 
 
-TArray<FPCGPinProperties> UPCGMinimalTestElement::OutputPinProperties() const
+TArray<FPCGPinProperties> UPCGMinimalTestElementSettings::OutputPinProperties() const
 {
 	// See InputPinProperties as it's essentially the same, but for output pins
 
@@ -92,7 +92,7 @@ TArray<FPCGPinProperties> UPCGMinimalTestElement::OutputPinProperties() const
 }
 
 
-FPCGElementPtr UPCGMinimalTestElement::CreateElement() const
+FPCGElementPtr UPCGMinimalTestElementSettings::CreateElement() const
 {
 	// Return your class which is the actual node behaviour
 	// Use MakeShared<T> for this
@@ -114,7 +114,7 @@ bool FPCGMinimalTestElement::ExecuteInternal(FPCGContext* Context) const
 	check(Context != nullptr);
 
 	// Resolve settings
-	const UPCGMinimalTestElement* const Settings = Context->GetInputSettings<UPCGMinimalTestElement>();
+	const UPCGMinimalTestElementSettings* const Settings = Context->GetInputSettings<UPCGMinimalTestElementSettings>();
 	check(Settings != nullptr);
 
 	// Get input pin with the default label
