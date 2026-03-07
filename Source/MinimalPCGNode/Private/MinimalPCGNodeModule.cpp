@@ -1,20 +1,20 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "PCGTest.h"
+#include "MinimalPCGNodeModule.h"
 
-#define LOCTEXT_NAMESPACE "FPCGTestModule"
+#define LOCTEXT_NAMESPACE "FMinimalPCGNodeModule"
 
-void FPCGTestModule::StartupModule()
+void FMinimalPCGNodeModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
 }
 
-void FPCGTestModule::ShutdownModule()
+void FMinimalPCGNodeModule::ShutdownModule()
 {
 	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 	// we call this function before unloading the module.
 }
 
 #undef LOCTEXT_NAMESPACE
-	
-IMPLEMENT_MODULE(FPCGTestModule, PCGTest)
+
+IMPLEMENT_MODULE(FMinimalPCGNodeModule, MinimalPCGNode)

@@ -1,5 +1,5 @@
 
-#include "PCGTestElement.h"
+#include "PCGMinimalTestElement.h"
 #include "PCGContext.h"
 #include "PCGPin.h"
 
@@ -7,33 +7,33 @@
 
 namespace
 {
-	const FName NodeName("TestNode");
+	const FName NodeName("MinimalTestNode");
 	const FText NodeTitle = FText::Format(LOCTEXT("NodeTitle", "PCG Unrealcode | {0}"), FText::FromName(NodeName));
 	const FText Tooltip = LOCTEXT("Tooltip", "Copies input to output");
 }
 
 #if WITH_EDITOR
-FName UPCGTestElement::GetDefaultNodeName() const
+FName UPCGMinimalTestElement::GetDefaultNodeName() const
 {
 	return NodeName;
 }
 
-FText UPCGTestElement::GetDefaultNodeTitle() const
+FText UPCGMinimalTestElement::GetDefaultNodeTitle() const
 {
 	return NodeTitle;
 }
 
-FText UPCGTestElement::GetNodeTooltipText() const
+FText UPCGMinimalTestElement::GetNodeTooltipText() const
 {
 	return Tooltip;
 }
 
-EPCGSettingsType UPCGTestElement::GetType() const
+EPCGSettingsType UPCGMinimalTestElement::GetType() const
 {
 	return EPCGSettingsType::Spatial;
 }
 
-bool UPCGTestElement::HasDynamicPins() const
+bool UPCGMinimalTestElement::HasDynamicPins() const
 {
 	return true;
 }
@@ -42,7 +42,7 @@ bool UPCGTestElement::HasDynamicPins() const
 #endif
 
 
-FPCGDataTypeIdentifier UPCGTestElement::GetCurrentPinTypesID(const UPCGPin* InPin) const
+FPCGDataTypeIdentifier UPCGMinimalTestElement::GetCurrentPinTypesID(const UPCGPin* InPin) const
 {
 	// Returns the current pin types, which can either be the static types from the pin properties, or a dynamic type based on connected edges.
 	// By default we set output pin types to the union of the default input pin incident edge types, if it is dynamic and the default input exists.
@@ -59,7 +59,7 @@ FPCGDataTypeIdentifier UPCGTestElement::GetCurrentPinTypesID(const UPCGPin* InPi
 }
 
 
-TArray<FPCGPinProperties> UPCGTestElement::InputPinProperties() const
+TArray<FPCGPinProperties> UPCGMinimalTestElement::InputPinProperties() const
 {
 	// Init pins - increase the number to add more pins
 	TArray<FPCGPinProperties> PinProperties;
@@ -76,7 +76,7 @@ TArray<FPCGPinProperties> UPCGTestElement::InputPinProperties() const
 }
 
 
-TArray<FPCGPinProperties> UPCGTestElement::OutputPinProperties() const
+TArray<FPCGPinProperties> UPCGMinimalTestElement::OutputPinProperties() const
 {
 	// See InputPinProperties as it's essentially the same, but for output pins
 
@@ -92,29 +92,29 @@ TArray<FPCGPinProperties> UPCGTestElement::OutputPinProperties() const
 }
 
 
-FPCGElementPtr UPCGTestElement::CreateElement() const
+FPCGElementPtr UPCGMinimalTestElement::CreateElement() const
 {
 	// Return your class which is the actual node behaviour
 	// Use MakeShared<T> for this
-	return MakeShared<FPCGTestElement>();
+	return MakeShared<FPCGMinimalTestElement>();
 }
 // End UPCGSettings interface
 
 // Begin IPCGElement interface
-bool FPCGTestElement::ExecuteInternal(FPCGContext* Context) const
+bool FPCGMinimalTestElement::ExecuteInternal(FPCGContext* Context) const
 {
 	// Example implementation
 	// This is the behaviour of your node
 	// You can grab data from your pins and your settings directly from the Context arg
 
 	// Add some basic profiler support
-	TRACE_CPUPROFILER_EVENT_SCOPE(FPCGTestElement::Execute);
+	TRACE_CPUPROFILER_EVENT_SCOPE(FPCGMinimalTestElement::Execute);
 
 	// Double check settings
 	check(Context != nullptr);
 
 	// Resolve settings
-	const UPCGTestElement* const Settings = Context->GetInputSettings<UPCGTestElement>();
+	const UPCGMinimalTestElement* const Settings = Context->GetInputSettings<UPCGMinimalTestElement>();
 	check(Settings != nullptr);
 
 	// Get input pin with the default label

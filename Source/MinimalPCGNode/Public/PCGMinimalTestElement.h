@@ -2,10 +2,10 @@
 
 #include "PCGSettings.h"
 
-#include "PCGTestElement.generated.h"
+#include "PCGMinimalTestElement.generated.h"
 
 UCLASS(BlueprintType, ClassGroup = (Procedural), Category = "Unrealcode | Test Nodes")
-class PCGTEST_API UPCGTestElement : public UPCGSettings
+class MINIMALPCGNODE_API UPCGMinimalTestElement : public UPCGSettings
 {
 	GENERATED_BODY()
 
@@ -31,7 +31,7 @@ public:
 	bool bExampleSetting = false;
 };
 
-class PCGTEST_API FPCGTestElement : public IPCGElement
+class MINIMALPCGNODE_API FPCGMinimalTestElement : public IPCGElement
 {
 protected:
 	// Begin IPCGElement interface

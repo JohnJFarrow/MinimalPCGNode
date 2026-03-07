@@ -4,7 +4,7 @@
 
 #include "Modules/ModuleManager.h"
 
-class FPCGTestModule : public IModuleInterface
+class FMinimalPCGNodeModule : public IModuleInterface
 {
 public:
 
