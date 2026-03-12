@@ -71,7 +71,6 @@ TArray<FPCGPinProperties> UPCGMinimalTestElementSettings::InputPinProperties() c
 	Pin.AllowedTypes = EPCGDataType::Spatial;
 	Pin.bAllowMultipleData = true;
 
-	PinProperties.Emplace(Pin);
 	return PinProperties;
 }
 
