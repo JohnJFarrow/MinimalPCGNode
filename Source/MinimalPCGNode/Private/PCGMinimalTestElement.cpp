@@ -2,6 +2,7 @@
 #include "PCGMinimalTestElement.h"
 #include "PCGContext.h"
 #include "PCGPin.h"
+#include "Data/PCGBasePointData.h"
 
 #define LOCTEXT_NAMESPACE "PCGUnrealCode"
 
@@ -64,12 +65,12 @@ TArray<FPCGPinProperties> UPCGMinimalTestElementSettings::InputPinProperties() c
 	// Init pins - increase the number to add more pins
 	TArray<FPCGPinProperties> PinProperties;
 
-	// Pin default ctor is no exported
-	FPCGPinProperties Pin = PinProperties.Emplace_GetRef(PCGPinConstants::DefaultInputLabel, FPCGDataTypeInfo::AsId());
+	constexpr bool bAllowMultipleConnections = false;
+	constexpr bool bAllowMultipleData = false;
 
+	// Pin default ctor is no exported
+	FPCGPinProperties Pin = PinProperties.Emplace_GetRef(PCGPinConstants::DefaultInputLabel, FPCGDataTypeInfoSpatial::AsId(), bAllowMultipleConnections, bAllowMultipleData);
 	Pin.Usage = EPCGPinUsage::Normal;
-	Pin.AllowedTypes = EPCGDataType::Spatial;
-	Pin.bAllowMultipleData = true;
 
 	return PinProperties;
 }
