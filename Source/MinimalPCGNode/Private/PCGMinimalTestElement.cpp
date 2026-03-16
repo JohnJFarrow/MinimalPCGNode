@@ -69,7 +69,7 @@ TArray<FPCGPinProperties> UPCGMinimalTestElementSettings::InputPinProperties() c
 	constexpr bool bAllowMultipleData = false;
 
 	// Pin default ctor is no exported
-	FPCGPinProperties Pin = PinProperties.Emplace_GetRef(PCGPinConstants::DefaultInputLabel, FPCGDataTypeInfoSpatial::AsId(), bAllowMultipleConnections, bAllowMultipleData);
+	FPCGPinProperties& Pin = PinProperties.Emplace_GetRef(PCGPinConstants::DefaultInputLabel, FPCGDataTypeInfoSpatial::AsId(), bAllowMultipleConnections, bAllowMultipleData);
 	Pin.Usage = EPCGPinUsage::Normal;
 
 	return PinProperties;
